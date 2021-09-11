@@ -8,6 +8,17 @@
  *
 */
 
+/* root color variables*/
+
+:root {
+    --clr-dark: #0e110e;
+    --clr-light: #eef5f1;
+    --clr-green: #42F584;
+    --clr-blue: #4BB6FF;
+    --clr-orange: #FF9A00;
+    --clr-grd: linear-gradient(#FF9A00, #42F584, #4BB6FF, #0e110e 50%);
+    --clr-grd-f: linear-gradient(#FF9A00, #42F584, #4BB6FF);
+}
 
 /* ---- Base Rules ---- */
 body {
@@ -64,11 +75,11 @@ section {
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
-.navbar__list {
-    outline: 1px solid red;
-}
 
 .navbar__menu ul {
+    display: flex;
+    justify-content: end;
+    flex-wrap: wrap;
     padding-left: 0;
     margin: 0;
     text-align: right;
@@ -76,9 +87,13 @@ section {
 
 .navbar__menu li {
     display: inline-block;
+    color: black;
+    padding: 1em;
+    margin: 1em;
 }
 
 .navbar__menu .menu__link {
+    cursor: pointer;
     display: block;
     padding: 1em;
     font-weight: bold;
@@ -86,10 +101,34 @@ section {
     color: #000;
 }
 
+.navbar__menu .menu__active {
+    background: #333;
+    color: #fff;
+    transition: ease 0.3s all;
+}
+
 .navbar__menu .menu__link:hover {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;
+}
+
+#myBtn {
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+    display: none;
+    z-index: 1;
+    border: none;
+    background-image: linear-gradient(
+        var(--clr-green),
+        var(--clr-blue)
+    );
+    opacity: 0.3;
+}
+
+#myBtn:hover {
+    opacity: 1;
 }
 
 /* Header Styles */
@@ -197,17 +236,17 @@ section:nth-of-type(3n + 1) .landing__container::after {
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
 /* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
-section.your-active-class {
+section.active {
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-section.your-active-class .landing__container::before {
+section.active .landing__container::before {
     opacity: 1;
     animation: rotate 4s linear 0s infinite forwards;
 }
 
-section.your-active-class .landing__container::after {
+section.active .landing__container::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
 }
