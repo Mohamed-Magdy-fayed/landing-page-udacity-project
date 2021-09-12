@@ -9,7 +9,6 @@
 */
 
 /* root color variables*/
-
 :root {
     --clr-dark: #333;
     --clr-gray: #808080;
@@ -46,7 +45,7 @@ h1 {
     margin: 2em 1rem;
 }
 
-@media only screen and (min-width: 35em){
+@media only screen and (min-width: 40em){
     h1 {
         font-size: 7em;
         margin: 2em 4rem 1em;
@@ -84,12 +83,14 @@ section {
     transition: all 500ms ease-in-out;
 }
 
+/* section motion */
 section:hover {
     box-shadow: 0 0 10px var(--clr-dark),
     0 10px 10px var(--clr-dark);
     transform: scale(1.02);
 }
 
+/* section background */ 
 section::before {
     content: "";
     height: 100%;
@@ -102,11 +103,7 @@ section::before {
     border-radius: 2rem;
 }
 
-
-/* ---- Module Rules ---- */
-
 /* Navigation Styles*/
-
 .navbar__menu::before {
     content: "";
     position: absolute;
@@ -123,7 +120,7 @@ section::before {
     flex-direction: row;
     justify-content: space-between;
 }
-#navbar__list {
+.list__navList {
     display: flex;
     flex-direction: row;
     justify-content: end;
@@ -155,7 +152,69 @@ section::before {
     transition: all 200ms ease-in-out;
 }
 
-.addBtn {
+/* hamburger menu style */
+.navbar__menuBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1em;
+    cursor: pointer;
+}
+
+.navbar__hamburger {
+    position: relative;
+    display: none;
+    width: 2rem;
+    height: 2rem;
+}
+
+.navbar__hamburger span {
+    height: 2px;
+    width: 1.5rem;
+    display: block;
+    position: relative;
+    background-color: var(--clr-dark);
+    margin: 6px;
+    transform-origin: 0.5px 0.5px;
+}
+
+/* switch view to mobile */
+@media only screen and (max-width: 40rem) {
+    .list__navList {
+        display: none;
+    }
+    .navbar__hamburger {
+        display: block;
+    }
+}
+
+.open span:first-child{
+    transform: rotate(45deg);
+}
+
+.open span:nth-child(2){
+    opacity: 0;
+}
+
+.open span:last-child{
+    transform: rotate(-45deg);
+}
+
+.opened {
+    display: block;
+    position: absolute;
+    flex-direction: column;
+    background-color: var(--clr-light);
+    align-self: center;
+    text-align: center;
+    right: 2em;
+    top: 3.3rem;
+    padding: 0;
+}
+
+/* new section button styles */ 
+.navbar__addBtn {
     padding: 1rem;
     font-size: 1rem;
     font-weight: bolder;
@@ -168,13 +227,13 @@ section::before {
     transition: all 200ms ease-in-out;
 }
 
-.addBtn:hover,
-.addBtn:focus {
+.navbar__addBtn:hover {
     background-color: var(--clr-dark);
     color: var(--clr-light);
 }
 
-#toTopBtn {
+/* to top button styles */
+.main__totop {
     position: fixed;
     bottom: 3rem;
     right: 3rem;
@@ -193,7 +252,7 @@ section::before {
     opacity: 0.3;
 }
 
-#toTopBtn::before {
+.main__totop::before {
     content: "";
     height: 4.1rem;
     width: 4.1rem;
@@ -206,7 +265,7 @@ section::before {
     background-image: var(--clr-grd-f);
 }
 
-#toTopBtn:hover {
+.main__totop:hover {
     opacity: 1;
 }
 
@@ -220,15 +279,14 @@ section::before {
 
 /* Footer Styles */
 .page__footer {
-    background: #000;
+    background: var(--clr-dark);
     padding: 3em;
-    color: #fff;
+    color: var(--clr-light);
 }
 
 .page__footer p{
-    color: #fff;
+    color: var(--clr-light);
 }
-
 
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
@@ -238,9 +296,8 @@ section::before {
     width: 100%;
 }
 
-@media only screen and (min-width: 35em){
+@media only screen and (max-width: 40em){
     .landing__container {
-        /* max-width: 50em; */
         padding: 4em;
     }
 }
@@ -311,10 +368,8 @@ section:nth-of-type(3n + 1) .landing__container::after {
     transition: ease 0.5s all;
 }
 
-
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
-/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
 section.active {
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);

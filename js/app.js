@@ -1,27 +1,16 @@
 /**
- * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- * 
- * Dependencies: None
- * 
- * JS Version: ES2015/ES6
- * 
- * JS Standard: ESlint
- * 
-*/
-
-/**
  * Define Global Variables
  * 
 */
+
+const body = document.querySelector ("body");
 const main = document.querySelector ("main");
 const addSectionButton = document.querySelector ("button");
 const navUl = document.querySelector ("ul");
 const btn = document.getElementById ("toTopBtn");
 const nav = document.querySelector ("nav");
+const hamburgerBtn = document.getElementById ("hamburger__btn");
+let sectionNum = 1;
 const scrollTimer = -1;
 
 
@@ -31,13 +20,13 @@ const scrollTimer = -1;
  * 
 */
 
-// scroll into view function 
+// scroll into view function behavior
 
 const scrollIntoView = function scrollIntoView(section) {
     section.scrollIntoView ({behavior: "smooth", block: "center"});
 }
 
-// hiding the scroll to top button
+// hide and display the scroll to top button
 
 const show = function show () {
     btn.style.display = "block";
@@ -47,6 +36,37 @@ const hide = function hide() {
     btn.style.display = "none";
 }
 
+//open/close hamburger menu
+
+hamburgerBtn.addEventListener ("click", function open(event) {
+    event.preventDefault();
+    if (hamburgerBtn.classList.contains ("open")) {
+        hamburgerBtn.classList.remove ("open");
+        navUl.classList.remove ("opened");
+        navUl.style.display = "none";
+        body.style.overflow = "visible";
+    } else {
+        hamburgerBtn.classList.add ("open");
+        navUl.classList.add ("opened");
+        body.style.overflow = "hidden"
+        navUl.style.display = "flex";
+    }
+})
+
+// show/hide hamburger menu and nav list
+addSectionButton.addEventListener ("click", function showHam() {
+    if (navUl.childElementCount >= 9 && window.innerWidth >= 650) {
+        hamburgerBtn.style.display = "block";
+        navUl.style.display = "none";
+    } else {} 
+})
+
+// scroll to top function behavior
+
+function topFunction() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -55,9 +75,15 @@ const hide = function hide() {
 
 // build page
 
+const run = function run () {
+    addItem ();
+    addSection ();
+}
+
+addSectionButton.addEventListener ('click', run);
+
 // funtion to add section
 
-let sectionNum = 1;
 const addSection = function addSection () {
     const sectionContent = `
     <section id="section${sectionNum}" data-nav="${sectionNum}">
@@ -78,6 +104,7 @@ const addSection = function addSection () {
 const addItem = function addItem () {
     const itemContent = `section ${sectionNum}`;
     const listItem = document.createElement ("li");
+
     listItem.classList.add ("menu__link");
     listItem.textContent = itemContent;
     listItem.dataset.nav = sectionNum
@@ -85,15 +112,9 @@ const addItem = function addItem () {
     navUl.appendChild (listItem);
 }
 
-// function to run adding script 
-
-const run = function run () {
-    addItem ();
-    addSection ();
-}
-
 // scroll event activates the section in view port
-// takes the data nav ID and use it to add the menu item as well
+// using getBoundingClientRect object
+// using helper function to hide/show the scroll to top button
 
 window.onscroll = function () {   
     const sections = document.querySelectorAll ("section"); 
@@ -113,25 +134,17 @@ window.onscroll = function () {
             deactiveItem.classList.remove ("menu__active");
 
             let height = main.getBoundingClientRect();
-            height.top < 100 ? show(): hide()
+            height.top <= -227 ? show(): hide()
         }
     })
 }
 
-addSectionButton.addEventListener ('click', run);
+// Scroll to section on link click
 
-// scroll to top function 
-
-function topFunction() {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  }
-
-// Scroll to anchor ID using scrollTO event
-
-
-
-
-
+navUl.addEventListener ("click", function selectSection (event) {
+    let target = document.getElementById ("section"+event.target.dataset.nav);
+    scrollIntoView(target);
+});
 
 /**
  * End Main Functions
@@ -144,14 +157,3 @@ function topFunction() {
 run ();
 run ();
 run ();
-
-// Scroll to section on link click
-
-navUl.addEventListener ("click", function selectSection (event) {
-    let target = document.getElementById ("section"+event.target.dataset.nav);
-    scrollIntoView(target);
-});
-
-// Set sections as active
-
-
