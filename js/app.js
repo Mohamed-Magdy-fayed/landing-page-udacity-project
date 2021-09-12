@@ -20,9 +20,9 @@
 const main = document.querySelector ("main");
 const addSectionButton = document.querySelector ("button");
 const navUl = document.querySelector ("ul");
-const btn = document.getElementById ("myBtn");
-
-
+const btn = document.getElementById ("toTopBtn");
+const nav = document.querySelector ("nav");
+const scrollTimer = -1;
 
 
 /**
@@ -34,16 +34,16 @@ const btn = document.getElementById ("myBtn");
 // scroll into view function 
 
 const scrollIntoView = function scrollIntoView(section) {
-    section.scrollIntoView ({behavior: "smooth"});
+    section.scrollIntoView ({behavior: "smooth", block: "center"});
 }
 
 // hiding the scroll to top button
 
-function show () {
+const show = function show () {
     btn.style.display = "block";
 }
 
-function hide() {
+const hide = function hide() {
     btn.style.display = "none";
 }
 
@@ -111,15 +111,12 @@ window.onscroll = function () {
             document.querySelectorAll ("menu__link").forEach (function callbackFn(elm) {
             });
             deactiveItem.classList.remove ("menu__active");
+
+            let height = main.getBoundingClientRect();
+            height.top < 100 ? show(): hide()
         }
     })
 }
-
-window.onscroll = function () {
-    let height = main.getBoundingClientRect();
-    height.top < 100 ? show(): hide()
-}
-
 
 addSectionButton.addEventListener ('click', run);
 
@@ -130,6 +127,9 @@ function topFunction() {
   }
 
 // Scroll to anchor ID using scrollTO event
+
+
+
 
 
 

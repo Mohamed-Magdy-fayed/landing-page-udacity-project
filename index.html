@@ -7,6 +7,7 @@
   <title>Manipulating the DOM</title>
   <!-- Load Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Fira+Sans:900|Merriweather&display=swap" rel="stylesheet">  <!-- Load Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
@@ -14,6 +15,7 @@
   IDs are only used for sections to connect menu achors to sections -->
   <header class="page__header">
     <nav class="navbar__menu">
+      <button class="addBtn">Add section <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
       <!-- Navigation starts as empty UL that will be populated with JS -->
       <ul id="navbar__list">
         <!-- <li class="menu__link" data-nav="1">section 1</li> -->
@@ -23,9 +25,9 @@
   <main>
     <header class="main__hero">
       <h1>Landing Page</h1>
-      <button class="add">Add section</button>
+      
     </header>
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <button onclick="topFunction()" id="toTopBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i>Top</button>
     <!-- Each Section has an ID (used for the anchor) and 
     a data attribute that will populate the li node.
     Adding more sections will automatically populate nav.
