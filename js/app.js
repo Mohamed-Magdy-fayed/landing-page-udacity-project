@@ -43,11 +43,15 @@ const open = function open(event) {
         navUl.classList.remove("opened");
         navUl.style.display = "none";
         body.style.overflow = "visible";
+
+        show()
     } else {
         hamburgerBtn.classList.add("open");
         navUl.classList.add("opened");
         body.style.overflow = "hidden"
         navUl.style.display = "flex";
+
+        hide()
     }
 }
 
