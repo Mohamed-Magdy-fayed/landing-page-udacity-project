@@ -127,12 +127,14 @@ window.onscroll = function() {
 
         if (toTop.top >= -300 && toTop.top <= 300) {
             element.classList.add("active");
+
             let activeItem = document.querySelector(`[data-nav*="${element.dataset.nav}"]`)
             document.querySelectorAll("menu__link").forEach(function callbackFn(elm) {
             });
             activeItem.classList.add("menu__active");
         } else {
             element.classList.remove("active");
+
             let deactiveItem = document.querySelector(`[data-nav*="${element.dataset.nav}"]`)
             document.querySelectorAll("menu__link").forEach(function callbackFn(elm) {
             });

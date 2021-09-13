@@ -80,7 +80,6 @@ section {
 section:hover {
     box-shadow: 0 0 10px var(--clr-dark),
     0 10px 10px var(--clr-dark);
-    transform: scale(1.02);
 }
 
 /* section background */ 
@@ -90,7 +89,7 @@ section::before {
     width: 100%;
     position: absolute;
     top: 0;
-    opacity: 50%;
+    opacity: 40%;
     z-index: -1;
     background-color: var(--clr-dark);
     border-radius: 2rem;
@@ -351,12 +350,13 @@ section:nth-of-type(3n + 1) .landing__container::after {
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
 section.active {
-    background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
     box-shadow: 0 0 10px var(--clr-dark),
     0 10px 10px var(--clr-dark);
-    transform: scale(1.02);
 }
+
+section.active::before {
+    opacity: 60%;
+} 
 
 section.active .landing__container::before {
     opacity: 1;
