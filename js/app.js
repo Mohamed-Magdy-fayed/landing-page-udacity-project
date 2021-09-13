@@ -127,7 +127,7 @@ window.onscroll = function() {
     sections.forEach (function callbackFn(element) {
         let toTop = element.getBoundingClientRect()
 
-        if (toTop.top >= -300 && toTop.top <= 300) {
+        if (toTop.top >= -300 && toTop.top <= 400) {
             element.classList.add("active");
 
             let activeItem = document.querySelector(`[data-nav*="${element.dataset.nav}"]`)
@@ -155,7 +155,9 @@ navUl.addEventListener("click", function (event) {
     let target = document.getElementById("section"+event.target.dataset.nav);
     scrollIntoView(target);
 
-    open(event);
+    if (window.innerWidth < 960 || hamburgerBtn.classList.contains("open")) {
+        open(event);
+    }
 });
 
 /**
