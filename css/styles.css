@@ -235,38 +235,29 @@ section::before {
 /* to top button styles */
 .main__totop {
     position: fixed;
-    bottom: 3rem;
-    right: 3rem;
+    bottom: 4rem;
+    right: 4rem;
     display: none;
     z-index: 5;
     font-size: 1.5rem;
     font-weight: bolder;
+    text-align: center;
+    padding: 1em;
     border: none;
-    background-color: var(--clr-dark);
-    height: 4rem;
-    width: 4rem;
-    border: 0.5rem solid var(--clr-light);
+    background-color: transparent;
+    height: 7rem;
+    width: 7rem;
     border-radius: 100%;
-    box-shadow: 0 0 100px var(--clr-green),
-    0 0 50px var(--clr-blue);
     opacity: 0.3;
-}
-
-.main__totop::before {
-    content: "";
-    height: 4.1rem;
-    width: 4.1rem;
-    position: fixed;
-    bottom: 3rem;
-    right: 3rem;
-    z-index: -2;
-    border-radius: 50%;
-    
-    background-image: var(--clr-grd-f);
+    transition-duration: 200ms;
+    cursor: pointer;
 }
 
 .main__totop:hover {
     opacity: 1;
+    color: var(--clr-blue);
+    text-shadow: 0 5px 5px var(--clr-dark);
+    transform: scale(1.2);
 }
 
 /* Header Styles */
