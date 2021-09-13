@@ -56,7 +56,7 @@ hamburgerBtn.addEventListener("click", open)
 // show/hide hamburger menu and nav list
 addSectionButton.addEventListener("click", function () {
     
-    if (navUl.childElementCount >= 9 && window.innerWidth >= 650) {
+    if (navUl.childElementCount === 9 && window.innerWidth >= 1000) {
         hamburgerBtn.style.display = "block";
         navUl.style.display = "none";
     } else {}
