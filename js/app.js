@@ -20,12 +20,12 @@ let sectionNum = 1;                                                 //conting th
 // scroll into view function behavior
 
 const scrollIntoView = function scrollIntoView(section) {
-    section.scrollIntoView ({behavior: "smooth", block: "center"});
+    section.scrollIntoView({behavior: "smooth", block: "center"});
 }
 
 // hide and display the scroll to top button
 
-const show = function show () {
+const show = function show() {
     toTopBtn.style.display = "block";
 }
 
@@ -35,24 +35,26 @@ const hide = function hide() {
 
 //open/close hamburger menu, navbar and adjust the helper classes on them
 
-hamburgerBtn.addEventListener ("click", function open(event) {
+const open = function open(event) {
     event.preventDefault();
 
-    if (hamburgerBtn.classList.contains ("open")) {
-        hamburgerBtn.classList.remove ("open");
-        navUl.classList.remove ("opened");
+    if (hamburgerBtn.classList.contains("open")) {
+        hamburgerBtn.classList.remove("open");
+        navUl.classList.remove("opened");
         navUl.style.display = "none";
         body.style.overflow = "visible";
     } else {
-        hamburgerBtn.classList.add ("open");
-        navUl.classList.add ("opened");
+        hamburgerBtn.classList.add("open");
+        navUl.classList.add("opened");
         body.style.overflow = "hidden"
         navUl.style.display = "flex";
     }
-})
+}
+
+hamburgerBtn.addEventListener("click", open)
 
 // show/hide hamburger menu and nav list
-addSectionButton.addEventListener ("click", function () {
+addSectionButton.addEventListener("click", function () {
     
     if (navUl.childElementCount >= 9 && window.innerWidth >= 650) {
         hamburgerBtn.style.display = "block";
@@ -74,14 +76,14 @@ function topFunction() {
 
 // build page
 
-const run = function run () {
-    addItem ();
-    addSection ();
+const run = function run() {
+    addItem();
+    addSection();
 }
 
 // funtion to add section
 
-const addSection = function addSection () {
+const addSection = function addSection() {
     const sectionContent = `
     <section id="section${sectionNum}" data-nav="${sectionNum}">
       <div class="landing__container">
@@ -93,45 +95,45 @@ const addSection = function addSection () {
     </section>`;
     sectionNum++;
 
-    main.insertAdjacentHTML ("beforeend", sectionContent);
+    main.insertAdjacentHTML("beforeend", sectionContent);
 }
 
 // function to add menu item
 
-const addItem = function addItem () {
+const addItem = function addItem() {
     const itemContent = `section ${sectionNum}`;
-    const listItem = document.createElement ("li");
+    const listItem = document.createElement("li");
 
     listItem.classList.add ("menu__link");
     listItem.textContent = itemContent;
     listItem.dataset.nav = sectionNum
 
-    navUl.appendChild (listItem);
+    navUl.appendChild(listItem);
 }
 
 // scroll event activates the section in view port
 // using getBoundingClientRect object
 // using helper function to hide/show the scroll to top button
 
-window.onscroll = function () {
+window.onscroll = function() {
     const sections = document.querySelectorAll ("section");
 
     sections.forEach (function callbackFn(element) {
         let toTop = element.getBoundingClientRect()
 
         if (toTop.top >= -300 && toTop.top <= 300) {
-            element.classList.add ("active");
-            let activeItem = document.querySelector (`[data-nav*="${element.dataset.nav}"]`)
-            document.querySelectorAll ("menu__link").forEach (function callbackFn(elm) {
+            element.classList.add("active");
+            let activeItem = document.querySelector(`[data-nav*="${element.dataset.nav}"]`)
+            document.querySelectorAll("menu__link").forEach(function callbackFn(elm) {
             });
-            activeItem.classList.add ("menu__active");
+            activeItem.classList.add("menu__active");
         } else {
-            element.classList.remove ("active");
-            let deactiveItem = document.querySelector (`[data-nav*="${element.dataset.nav}"]`)
-            document.querySelectorAll ("menu__link").forEach (function callbackFn(elm) {
+            element.classList.remove("active");
+            let deactiveItem = document.querySelector(`[data-nav*="${element.dataset.nav}"]`)
+            document.querySelectorAll("menu__link").forEach(function callbackFn(elm) {
             });
 
-            deactiveItem.classList.remove ("menu__active");
+            deactiveItem.classList.remove("menu__active");
 
             let height = main.getBoundingClientRect();
             height.top <= -227 ? show(): hide()
@@ -141,9 +143,14 @@ window.onscroll = function () {
 
 // Scroll to section on link click
 
-navUl.addEventListener ("click", function (event) {
-    let target = document.getElementById ("section"+event.target.dataset.nav);
+navUl.addEventListener("click", function (event) {
+    let target = document.getElementById("section"+event.target.dataset.nav);
     scrollIntoView(target);
+
+    let screenWidth = window.innerWidth
+    if (screenWidth <= 1000) {
+        open(event);
+    }
 });
 
 /**
@@ -154,9 +161,9 @@ navUl.addEventListener ("click", function (event) {
 
 // Build page
 
-addSectionButton.addEventListener ('click', run);
+addSectionButton.addEventListener('click', run);
 
-run ();
-run ();
-run ();
-run ();
+run();
+run();
+run();
+run();
