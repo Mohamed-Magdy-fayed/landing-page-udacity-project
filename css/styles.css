@@ -373,6 +373,9 @@ section:nth-of-type(3n + 1) .landing__container::after {
 section.active {
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    box-shadow: 0 0 10px var(--clr-dark),
+    0 10px 10px var(--clr-dark);
+    transform: scale(1.02);
 }
 
 section.active .landing__container::before {
