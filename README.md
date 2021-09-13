@@ -1,13 +1,27 @@
 # Landing Page Project
 
+## navigation through page made easy
+
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [description](#description)
+* [usage](#usage)
+* [dependencies](#dependencies)
 
-## Instructions
+## description
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+this is a landing page for a blog site that gives you access to different sections on the page through the navigation bar
 
-To get started, open `js/app.js` and start building out the app's functionality
+## usage
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+it gives you access to different sections on the page through the navigation bar
+
+## dependencies
+
+used the **main project** frame and restyled some of the main CSS
+**icons** from https://fontawesome.com/v4.7/icons/ 
+main java script idaea based on the outline of **udacity**
+extra ideas based on personal search on **youtube**
+**MDN** documentation 
+
+### page was redesigned and coded by Mohamed Magdy

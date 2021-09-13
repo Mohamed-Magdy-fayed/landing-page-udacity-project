@@ -1,23 +1,20 @@
 /**
  * Define Global Variables
- * 
+ *
 */
 
-const body = document.querySelector ("body");
-const main = document.querySelector ("main");
-const addSectionButton = document.querySelector ("button");
-const navUl = document.querySelector ("ul");
-const btn = document.getElementById ("toTopBtn");
-const nav = document.querySelector ("nav");
-const hamburgerBtn = document.getElementById ("hamburger__btn");
-let sectionNum = 1;
-const scrollTimer = -1;
-
+const body = document.querySelector ("body");                       //disable the scrolling when the hamburger is opend
+const main = document.querySelector ("main");                       //adding the section and show/hide to top button
+const addSectionButton = document.querySelector ("button");         //show/hide the nav and the hamburger button also for adding section
+const navUl = document.querySelector ("ul");                        //show/hide the nave, populate the navbar and scroll to section
+const toTopBtn = document.getElementById ("toTopBtn");              //show/hide the to top button and scrolling to top event
+const hamburgerBtn = document.getElementById ("hamburger__btn");    //hamburger button functionality
+let sectionNum = 1;                                                 //conting the section on the page
 
 /**
  * End Global Variables
  * Start Helper Functions
- * 
+ *
 */
 
 // scroll into view function behavior
@@ -29,17 +26,18 @@ const scrollIntoView = function scrollIntoView(section) {
 // hide and display the scroll to top button
 
 const show = function show () {
-    btn.style.display = "block";
+    toTopBtn.style.display = "block";
 }
 
 const hide = function hide() {
-    btn.style.display = "none";
+    toTopBtn.style.display = "none";
 }
 
-//open/close hamburger menu
+//open/close hamburger menu, navbar and adjust the helper classes on them
 
 hamburgerBtn.addEventListener ("click", function open(event) {
     event.preventDefault();
+
     if (hamburgerBtn.classList.contains ("open")) {
         hamburgerBtn.classList.remove ("open");
         navUl.classList.remove ("opened");
@@ -54,11 +52,12 @@ hamburgerBtn.addEventListener ("click", function open(event) {
 })
 
 // show/hide hamburger menu and nav list
-addSectionButton.addEventListener ("click", function showHam() {
+addSectionButton.addEventListener ("click", function () {
+    
     if (navUl.childElementCount >= 9 && window.innerWidth >= 650) {
         hamburgerBtn.style.display = "block";
         navUl.style.display = "none";
-    } else {} 
+    } else {}
 })
 
 // scroll to top function behavior
@@ -80,8 +79,6 @@ const run = function run () {
     addSection ();
 }
 
-addSectionButton.addEventListener ('click', run);
-
 // funtion to add section
 
 const addSection = function addSection () {
@@ -99,7 +96,7 @@ const addSection = function addSection () {
     main.insertAdjacentHTML ("beforeend", sectionContent);
 }
 
-// function to add menu item 
+// function to add menu item
 
 const addItem = function addItem () {
     const itemContent = `section ${sectionNum}`;
@@ -116,10 +113,12 @@ const addItem = function addItem () {
 // using getBoundingClientRect object
 // using helper function to hide/show the scroll to top button
 
-window.onscroll = function () {   
-    const sections = document.querySelectorAll ("section"); 
+window.onscroll = function () {
+    const sections = document.querySelectorAll ("section");
+
     sections.forEach (function callbackFn(element) {
         let toTop = element.getBoundingClientRect()
+
         if (toTop.top >= -300 && toTop.top <= 300) {
             element.classList.add ("active");
             let activeItem = document.querySelector (`[data-nav*="${element.dataset.nav}"]`)
@@ -131,6 +130,7 @@ window.onscroll = function () {
             let deactiveItem = document.querySelector (`[data-nav*="${element.dataset.nav}"]`)
             document.querySelectorAll ("menu__link").forEach (function callbackFn(elm) {
             });
+
             deactiveItem.classList.remove ("menu__active");
 
             let height = main.getBoundingClientRect();
@@ -141,7 +141,7 @@ window.onscroll = function () {
 
 // Scroll to section on link click
 
-navUl.addEventListener ("click", function selectSection (event) {
+navUl.addEventListener ("click", function (event) {
     let target = document.getElementById ("section"+event.target.dataset.nav);
     scrollIntoView(target);
 });
@@ -149,11 +149,14 @@ navUl.addEventListener ("click", function selectSection (event) {
 /**
  * End Main Functions
  * Begin Events
- * 
+ *
 */
 
-// Build page 
+// Build page
 
+addSectionButton.addEventListener ('click', run);
+
+run ();
 run ();
 run ();
 run ();
