@@ -194,7 +194,6 @@ section::before {
     flex-direction: column;
     flex-wrap: wrap-reverse;
     max-height: 25rem;
-    outline: 1px solid red;
     width: fit-content;
     background-color: var(--clr-light);
     align-self: center;

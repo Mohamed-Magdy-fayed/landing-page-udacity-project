@@ -20,7 +20,7 @@ let sectionNum = 1;                                                 //conting th
 // scroll into view function behavior
 
 const scrollIntoView = function scrollIntoView(section) {
-    section.scrollIntoView({behavior: "smooth", block: "center"});
+    section.scrollIntoView({behavior: "smooth", block: "start"});
 }
 
 // hide and display the scroll to top button
