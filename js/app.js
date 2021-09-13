@@ -147,10 +147,7 @@ navUl.addEventListener("click", function (event) {
     let target = document.getElementById("section"+event.target.dataset.nav);
     scrollIntoView(target);
 
-    let screenWidth = window.innerWidth
-    if (screenWidth <= 1000) {
-        open(event);
-    }
+    open(event);
 });
 
 /**
