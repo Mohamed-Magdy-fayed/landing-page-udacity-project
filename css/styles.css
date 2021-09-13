@@ -191,7 +191,7 @@ section::before {
     flex-direction: column;
     width: fit-content;
     padding-left: 0;
-    height: 30rem;
+    max-height: 30rem;
     width: 10rem;
     background-color: var(--clr-light);
     align-self: center;
