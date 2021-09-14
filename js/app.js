@@ -108,14 +108,16 @@ const addSection = function addSection() {
 // function to add menu item
 
 const addItem = function addItem() {
-    const itemContent = `section ${sectionNum}`;
+    const fragment = document.createDocumentFragment();
+    const itemContent = `<a href="#section${sectionNum}"></a>section ${sectionNum}`;
     const listItem = document.createElement("li");
 
     listItem.classList.add ("menu__link");
-    listItem.textContent = itemContent;
+    listItem.innerHTML = itemContent;
     listItem.dataset.nav = sectionNum
 
-    navUl.appendChild(listItem);
+    fragment.appendChild(listItem);
+    navUl.appendChild(fragment);
 }
 
 // scroll event activates the section in view port
@@ -153,6 +155,8 @@ window.onscroll = function() {
 // Scroll to section on link click
 
 navUl.addEventListener("click", function (event) {
+    event.preventDefault();
+    
     let target = document.getElementById("section"+event.target.dataset.nav);
     scrollIntoView(target);
 
