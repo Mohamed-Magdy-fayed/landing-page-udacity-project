@@ -60,6 +60,7 @@ const open = function open(event) {
 hamburgerBtn.addEventListener("click", open)
 
 // show/hide hamburger menu and nav list
+
 addSectionButton.addEventListener("click", function () {
     
     if (navUl.childElementCount === 9 && window.innerWidth >= 1000) {
