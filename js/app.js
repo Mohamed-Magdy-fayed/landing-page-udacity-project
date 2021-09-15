@@ -109,11 +109,11 @@ const addSection = function addSection() {
 
 const addItem = function addItem() {
     const fragment = document.createDocumentFragment();
-    const itemContent = `<a href="#section${sectionNum}"></a>section ${sectionNum}`;
+    const itemContent = `section ${sectionNum}`;
     const listItem = document.createElement("li");
 
     listItem.classList.add ("menu__link");
-    listItem.innerHTML = itemContent;
+    listItem.textContent = itemContent;
     listItem.dataset.nav = sectionNum
 
     fragment.appendChild(listItem);
@@ -154,9 +154,7 @@ window.onscroll = function() {
 
 // Scroll to section on link click
 
-navUl.addEventListener("click", function (event) {
-    event.preventDefault();
-    
+navUl.addEventListener("click", function (event) {    
     let target = document.getElementById("section"+event.target.dataset.nav);
     scrollIntoView(target);
 
